@@ -8,6 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+eslint.config.js
+index.html
+package-lock.json
+Readme.md 
+vite.config.js
 dist
 dist-ssr
 *.local
