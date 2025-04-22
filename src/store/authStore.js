@@ -27,6 +27,7 @@ const authStore = create((set) => (
             }
         },
         checkAuth: async () => {
+            set({ isAuthLoading: true })
             try {
                 const response = await axios.get('/v1/auth/im', { withCredentials: true })
                 if (!response) return set({ user: null })
@@ -35,8 +36,30 @@ const authStore = create((set) => (
             } catch (error) {
                 set({ user: null, isAuthLoading: false })
             }
+        },
+        signup: async (formData) => {
+            try {
+                const response = await axios.post('/v1/auth/register', formData, {
+                    withCredentials: true,
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                },);
+                if (response.data && response.data.currentUser) {
+                    set({ user: response.data.currentUser, isAuthLoading: false })
+                }
+                return {
+                    success: true,
+                    user: response.data.currentUser
+                }
+            } catch (error) {
+                console.log('registrationerror', error);
+                return {
+                    success: false,
+                    error: error.response?.data?.message || 'Reg failed!'
+                }
 
-
+            }
         }
 
     }
