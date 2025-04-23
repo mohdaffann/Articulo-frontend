@@ -4,7 +4,7 @@ import { XSquareIcon as Wrong } from "lucide-react"
 import authStore from "../store/authStore";
 import { useNavigate } from 'react-router-dom'
 const Signup = () => {
-    const { signup } = authStore();
+    const { signup, checkAuth } = authStore();
     const navigate = useNavigate();
     const [error, setError] = useState('')
     const { register, handleSubmit, formState: { errors, isSubmitting }, setValue } = useForm();
@@ -31,6 +31,7 @@ const Signup = () => {
 
             const res = await signup(form)
             if (res.success) {
+                checkAuth();
                 navigate('/');
             }
             else {
@@ -143,7 +144,7 @@ const Signup = () => {
                                 selectedFileName && (
                                     <div className="mt-1">
                                         <button className="cursor-pointer w-[12px] " onClick={clearProfile}>
-                                            <Wrong className="w-[12px]" />
+                                            <Wrong className="w-auto" />
                                         </button>
                                     </div>
                                 )
