@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './index.css'
 import Layout from './Layout/Layout.jsx'
-import { Categories, Home, Login, Signup, Posts } from './pages/PageIndex.js'
+import { Categories, Home, Login, Signup, Posts, Write } from './pages/PageIndex.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import authStore from './store/authStore.js'
 function App() {
@@ -34,6 +34,9 @@ function App() {
         {
           path: 'register',
           element: <Signup />
+        }, {
+          path: 'write',
+          element: <Write />
         }
       ]
     }

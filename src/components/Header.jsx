@@ -64,6 +64,14 @@ const Header = () => {
                 (<div className="animate-pulse">Loading...</div>)
                 : user ? (
                   <div className="flex items-center gap-2">
+                    <NavLink
+                      to="/write"
+                      className={({ isActive }) =>
+                        `px-3 py-1 rounded-md text-sm font-medium ${isActive ? "text-black" : "text-gray-600 hover:text-black"}`
+                      }
+                    >
+                      Write
+                    </NavLink>
                     <img src={user.profile || user.userName} className="w-8 h-8 rounded-full" />
                     <button onClick={logout} className="text-sm font-medium border border-black text-black px-4 py-2 rounded-md hover:bg-gray-100">Logout</button>
                   </div>
