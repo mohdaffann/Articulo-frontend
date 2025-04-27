@@ -1,0 +1,51 @@
+.ce-header {
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 3rem;
+}
+
+.ce header h1 {
+    font-size: 1rem;
+}
+
+.ce header h2 {
+    font-size: 2rem;
+}
+
+.ce header h3 {
+    font-size: 1rem;
+}
+
+.ce-paragraph {
+    font-size: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ce-block__content,
+.ce-block {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.codex-editor .ce-block__content,
+.codex-editor .cdx-block {
+
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: all 6s ease;
+    /* Subtle transition for smoother appearance */
+}
+
+.codex-editor .ce-block__content:focus,
+.codex-editor .cdx-block:focus {
+    outline: none;
+}
+
+::selection {
+    background-color: rgba(222, 66, 185, 0.636);
+    /* Light blue selection like Word */
+}
