@@ -16,17 +16,14 @@
     font-size: 1rem;
 }
 
-.ce-paragraph {
+.ce-paragraph.cdx-block {
     font-size: 20px;
-    width: 100%;
-    max-width: 100%;
+    width: 99%;
+    max-width: 99%;
 }
 
-.ce-block__content,
-.ce-block {
-    max-width: 100%;
-    width: 100%;
-}
+
+
 
 
 .codex-editor .ce-block__content,
@@ -43,9 +40,4 @@
 .codex-editor .ce-block__content:focus,
 .codex-editor .cdx-block:focus {
     outline: none;
-}
-
-::selection {
-    background-color: rgba(222, 66, 185, 0.636);
-    /* Light blue selection like Word */
 }

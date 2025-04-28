@@ -2,8 +2,11 @@ import React, { useEffect, useRef } from "react";
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
-import List from "@editorjs/list";
-import '../components/editorjs.css'
+import EditorjsList from '@editorjs/list';
+import ImageTool from '@editorjs/image';
+import editorjsCodecup from '@calumk/editorjs-codecup';
+import '../components/editorjs.css';
+import axios from 'axios';
 function Editor() {
     const editorInstance = useRef(null);
     const editorCont = useRef(null);
@@ -20,7 +23,40 @@ function Editor() {
                             levels: [1],
                             defaultLevel: 1,
                         }
-                    }
+                    },
+                    paragraph: {
+                        class: Paragraph,
+                        inlineToolbar: true,
+                    },
+                    list: {
+                        class: EditorjsList,
+                        inlineToolbar: true,
+                        config: {
+                            defaultStyle: 'unordered'
+                        }
+                    },
+                    image: {
+                        class: ImageTool,
+                        config: {
+                            uploader: {
+                                async uploadByFile(file) {
+                                    const formData = new FormData();
+                                    formData.append('file', file);
+                                    const res = await axios.post('v1/editorjs-image-upload', formData,
+                                        {
+                                            withCredentials: true,
+                                            headers: {
+                                                'Content-Type': 'multipart/form-data'
+                                            }
+                                        }
+                                    );
+                                    return res.data;
+                                }
+                            }
+                        }
+                    },
+                    code: editorjsCodecup,
+
                 },
                 data: {
                     blocks: [
