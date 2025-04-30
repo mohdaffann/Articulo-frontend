@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
@@ -7,9 +7,16 @@ import ImageTool from '@editorjs/image';
 import editorjsCodecup from '@calumk/editorjs-codecup';
 import '../components/editorjs.css';
 import axios from 'axios';
-function Editor() {
+const Editor = forwardRef((props, ref) => {
+
     const editorInstance = useRef(null);
     const editorCont = useRef(null);
+    useImperativeHandle(ref, () => ({
+        async save() {
+            return await editorInstance?.current?.save();
+        }
+    }
+    ));
     useEffect(() => {
         if (!editorInstance.current && editorCont.current) {
             editorInstance.current = new EditorJS({
@@ -84,7 +91,9 @@ function Editor() {
         <div ref={editorCont} className="w-full" ></div>
     )
 
-}
+})
+
+
 
 export default Editor;
 
