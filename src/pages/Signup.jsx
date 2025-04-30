@@ -32,7 +32,7 @@ const Signup = () => {
             const res = await signup(form)
             if (res.success) {
                 checkAuth();
-                navigate('/');
+                return navigate('/');
             }
             else {
                 setError(res.error);
