@@ -2,6 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Heart as Like, LucideMessageCircle as Cmt } from 'lucide-react';
 function PostCard({ post }) {
 
+    const imageBlock = post?.description?.blocks?.find((item) => (
+        item.type === 'image'
+    ))
+
+    const ImageUrl = imageBlock?.data?.file?.url || 'https://steptodown.com/istock-downloader/images/steptodown.com623202.jpg';
+    const paraBlock = post?.description?.blocks?.find((item) => (
+        item.type === 'paragraph'
+    ));
+
+    const paragraph = paraBlock?.data?.text;
+    console.log('para text'.paragraph);
+    console.log('paraBlock', paraBlock);
+    console.log(post);
+
+
+
 
     return (
 
@@ -22,7 +38,7 @@ function PostCard({ post }) {
                 <h2 className="text-lg md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">{post.title}</h2>
 
 
-                <div className="text-base  md:text-base text-gray-600 mb-3 md:mb-6 line-clamp-3">{post.description}</div>
+                <div className="text-sm mb-3 line-clamp-2 md:text-base text-gray-600 md:mb-6 md:line-clamp-2">{paragraph}</div>
 
 
                 <div className="flex flex-row items-center justify-between w-45">
@@ -38,10 +54,9 @@ function PostCard({ post }) {
                 </div>
 
             </div>
-            <div className="w-20 md:w-48 lg:w-64 h-auto overflow-hidden flex-shrink-0 flex items-center justify-center">
+            <div className="w-[130px] md:w-48 lg:w-64 h-auto overflow-hidden flex-shrink-0 flex items-center justify-center">
                 <img
-                    src={post.image || 'https://www.webascender.com/wp-content/uploads/Screen-Shot-2017-01-19-at-1.41.05-PM.png'}
-                    alt="Blog cover"
+                    src={ImageUrl}
                     className="h-auto w-full object-cover "
                 />
             </div>
