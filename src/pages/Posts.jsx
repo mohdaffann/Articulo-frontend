@@ -2,6 +2,7 @@ import React from "react";
 import PostCard from "../components/PostCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 function Posts() {
     const [post, setPost] = useState([])
 
@@ -29,7 +30,10 @@ function Posts() {
             {/* leftt posts display*/}
             <div className="w-full lg:w-2/3 space-y-6">
                 {post.map((post, index) => (
-                    <PostCard key={index} post={post} />
+                    <Link to={`/posts/${post._id}`} >
+                        <PostCard key={index} post={post} />
+                    </Link>
+
                 ))}
             </div>
 
