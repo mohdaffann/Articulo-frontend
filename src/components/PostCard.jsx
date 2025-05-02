@@ -12,16 +12,13 @@ function PostCard({ post }) {
     ));
 
     const paragraph = paraBlock?.data?.text;
-    console.log('para text'.paragraph);
-    console.log('paraBlock', paraBlock);
-    console.log(post);
 
 
 
 
     return (
 
-        <div className="flex flex-row md:flex-row bg-white   overflow-hidden border-b-2 border-b-gray-100">
+        <div className="  cursor-pointer flex flex-row md:flex-row bg-white   overflow-hidden border-b-2 border-b-gray-100">
 
             <div className="flex-1 p-4 md:p-6 flex-row">
 
