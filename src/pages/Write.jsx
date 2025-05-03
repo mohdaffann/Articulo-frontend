@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
-import Editor from "../components/Editor.jsx";
+import React, { useRef, useState, lazy, Suspense } from "react";
 import axios from "axios";
+import EditorLoader from "../components/EditorLoader.jsx";
 import { useNavigate } from "react-router-dom";
+const Editor = lazy(() => import('../components/Editor.jsx'));
 function Write() {
     const navigate = useNavigate();
     const editorjsRef = useRef(null);
@@ -48,7 +49,10 @@ function Write() {
     return (
         <div className="min-h-screen w-full flex justify-center px-2 sm:px-4">
             <div className="w-full max-w-3xl p-4 sm:p-6">
-                <Editor ref={editorjsRef} />
+                <Suspense fallback={<EditorLoader />}>
+                    <Editor ref={editorjsRef} />
+                </Suspense>
+
                 <div className="flex justify-end mt-1">
                     <button className="rounded-md px-2 py-1 transition-all text-white duration-300 ease-in-out bg-green-600 hover:bg-green-700 "
                         onClick={handleSubmit}
