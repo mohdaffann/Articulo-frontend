@@ -2,8 +2,10 @@ import React, { useRef, useState, lazy, Suspense } from "react";
 import axios from "axios";
 import EditorLoader from "../components/EditorLoader.jsx";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 const Editor = lazy(() => import('../components/Editor.jsx'));
 function Write() {
+    const queryClient = useQueryClient();
     const navigate = useNavigate();
     const editorjsRef = useRef(null);
     const [required, setRequired] = useState('');
@@ -35,6 +37,10 @@ function Write() {
 
             if (res && res.data) {
                 console.log('blog posted successfully ', res.data);
+                queryClient.invalidateQueries({
+                    queryKey: ['posts'],
+                    exact: true
+                })
                 return navigate('/posts');
             }
 
