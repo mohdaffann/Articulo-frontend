@@ -4,6 +4,7 @@ import { useFetchId } from '../customHooks/useFetchId.js'
 import { FullBlogRenderer } from "../components/fullBlogRenderer.jsx";
 import { UserCircle2 as User } from 'lucide-react';
 import EditorLoader from "../components/EditorLoader.jsx";
+import CommentSection from "../components/CommentSection.jsx";
 function BlogDetail() {
 
     const { id } = useParams();
@@ -11,7 +12,7 @@ function BlogDetail() {
     console.log('blog', blog);
 
     return (
-        <div className="w-full flex justify-center items-center  px-4 sm:px-6 mt-12">
+        <div className="w-full flex flex-col justify-center items-center  px-4 sm:px-6 mt-12">
 
             <div className="w-full max-w-[720px] flex flex-col mb-6 items-center justify-start">
                 {loading ? <EditorLoader /> :
@@ -39,6 +40,9 @@ function BlogDetail() {
                     </>
 
                 }
+            </div>
+            <div className="w-full max-w-[720px] flex flex-col ">
+                <CommentSection blogId={id} />
             </div>
         </div>
 
