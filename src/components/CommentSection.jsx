@@ -3,29 +3,31 @@ import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import authStore from "../store/authStore";
 import CommentPublish from "./CommentPublish";
-
+import UpdateDeleteCmt from "../customHooks/updateDeleteCmt";
+import { UserCircle2Icon as UserIcon } from 'lucide-react'
 function CommentSection({ blogId }) {
 
     const { user } = authStore();
 
     const [text, setText] = useState('');
 
-    const getComments = useQuery({
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["comments", blogId],
         queryFn: async () => {
-            return await axios.get(`/v1/blog/comments/${blogId}`)
+            const res = await axios.get(`/v1/blog/comments/${blogId}`)
+            return res?.data?.comments;
         },
         staleTime: 6 * 60 * 1000
     });
 
 
-    console.log('get all comments', getComments);
+    console.log('get all comments', data);
 
 
-    if (getComments.isLoading) {
+    if (isLoading) {
         return <div>Loading...</div>
     }
-    if (getComments.isError) {
+    if (isError) {
         return <div>{Error}</div>
     }
 
@@ -41,7 +43,7 @@ function CommentSection({ blogId }) {
                             <div className="flex items-center mb-1.5">
                                 <img
                                     src={user.profile}
-                                    alt="user profile"
+                                    alt={<UserIcon />}
                                     className="w-6 h-6 rounded-full mr-2 object-cover"
                                 />
                                 <span className="text-lg font-medium text-gray-700 mr-2">
@@ -67,22 +69,26 @@ function CommentSection({ blogId }) {
                 Replies
             </h2>
 
-            {getComments.data?.data?.comments.map((item) => (
+            {data?.map((item) => (
                 <div key={item._id} className="mb-4 pb-4 border-b border-gray-200">
+
                     <div className="flex items-center mb-1">
                         <img
-                            src={item.userId.profile}
-                            alt="user profile"
+                            src={item?.userId?.profile || <UserIcon />}
+                            alt={<UserIcon />}
                             className="w-6 h-6 rounded-full mr-2 object-cover"
                         />
                         <span className="text-lg font-medium text-gray-700 mr-2">
-                            {item.userId.userName}
+                            {item?.userId?.userName}
                         </span>
                         <span className="text-sm text-gray-500">
-                            {item.createdAt.substring(0, 10)}
+                            {item?.createdAt?.substring(0, 10)}
                         </span>
+                        <div className="ml-auto">
+                            <UpdateDeleteCmt comment={item} />
+                        </div>
                     </div>
-                    <p className="text-gray-800 ml-8">{item.text}</p>
+                    <p className="text-gray-800 ml-8">{item?.text}</p>
                 </div>
             ))}
         </div>

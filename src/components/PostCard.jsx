@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Heart as Like, LucideMessageCircle as Cmt } from 'lucide-react';
+import { Heart as Like, LucideMessageCircle as Cmt, UserIcon } from 'lucide-react';
 function PostCard({ post }) {
 
     const imageBlock = post?.description?.blocks?.find((item) => (
@@ -25,7 +25,7 @@ function PostCard({ post }) {
                 <div className="flex items-center mb-2 md:mb-4">
                     <img
                         src={post.user.profile}
-                        alt="User profile"
+                        alt={<UserIcon />}
                         className="w-8 h-8 md:w-10 md:h-10 object-cover mr-2 md:mr-3"
                     />
                     <span className="font-medium text-gray-800 text-sm md:text-base">{post.user.userName}</span>
