@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios';
-
+import authStore from '../store/authStore';
 const CommentPublish = ({ blogId }) => {
+    const { user } = authStore();
     const queryClient = useQueryClient();
     const [isExpanded, setIsExpanded] = useState(false);
     const [comment, setComment] = useState('');
@@ -21,22 +22,20 @@ const CommentPublish = ({ blogId }) => {
             queryClient.setQueryData(['comments', blogId], (oldData) => {
                 console.log(oldData);
 
-                return {
+                return [
+                    {
+                        blogId: blogId,
+                        text: newData,
+                        createdAt: new Date().toISOString(),
+                        _id: 'optimistic-update-id',
+                        userId: {
+                            profile: user.profile,
+                            userName: user.userName
+                        }
 
-
-                    ...oldData.data,
-                    comments: [
-                        {
-                            blogId: blogId,
-                            text: newData,
-                            createdAt: new Date().toISOString(),
-                            _id: 'optimistic-update-id'
-
-                        },
-                        ...oldData.data.comments
-                    ],
-
-                }
+                    },
+                    ...oldData
+                ]
             })
             return { previousCommentsData }
         },
