@@ -3,11 +3,11 @@ import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import authStore from "../store/authStore";
 import CommentPublish from "./CommentPublish";
-import UpdateDeleteCmt from "../customHooks/updateDeleteCmt";
-import { UserCircle2Icon as UserIcon } from 'lucide-react'
-function CommentSection({ blogId }) {
+import UpdateDeleteCmt from "../customHooks/UpdateDeleteCmt";
+import { LockKeyhole, UserCircle2Icon as UserIcon } from 'lucide-react'
+function CommentSection({ blogId, commentCount }) {
 
-    const { user } = authStore();
+    const user = authStore((state) => state.user)
 
     const [text, setText] = useState('');
 
@@ -57,7 +57,10 @@ function CommentSection({ blogId }) {
 
                         </div>
                     ) : (
-                        <div>Login to Post Comment</div>
+                        <div className="flex items-center justify-center">
+                            <LockKeyhole className="w-[20px] text-red-500" />
+                            <span className="text-2xl">Login to post comment</span>
+                        </div>
                     )
                 }
 
@@ -66,7 +69,7 @@ function CommentSection({ blogId }) {
 
 
             <h2 className="text-2xl font-semibold text-gray-800 mb-4 border-b border-gray-300 pb-2 mt-7">
-                Replies
+                {`Relpies(${commentCount})`}
             </h2>
 
             {data?.map((item) => (
