@@ -1,11 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import { XSquareIcon as Wrong } from "lucide-react"
 import authStore from "../store/authStore";
 import { useNavigate } from 'react-router-dom'
 const Signup = () => {
     const { signup, checkAuth } = authStore();
+    const user = authStore((s) => s.user)
     const navigate = useNavigate();
+    useEffect(() => {
+        if (user) {
+            navigate('/home')
+        }
+    }, [user, navigate])
     const [error, setError] = useState('')
     const { register, handleSubmit, formState: { errors, isSubmitting }, setValue } = useForm();
     const [selectedFileName, setSelectedFileName] = useState('');
@@ -32,7 +38,7 @@ const Signup = () => {
             const res = await signup(form)
             if (res.success) {
                 checkAuth();
-                return navigate('/');
+                return navigate('/home');
             }
             else {
                 setError(res.error);
