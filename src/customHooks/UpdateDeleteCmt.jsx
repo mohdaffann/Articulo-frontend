@@ -3,6 +3,7 @@ import authStore from "../store/authStore";
 import axios from "axios";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { Edit, Trash } from 'lucide-react'
+import { toast } from 'react-hot-toast'
 function UpdateDeleteCmt({ comment }) {
     const queryClient = useQueryClient();
     const { user } = authStore();
@@ -33,12 +34,14 @@ function UpdateDeleteCmt({ comment }) {
             return { previousCommentsData }
         },
         onError: (error, updtData, context) => {
+            console.log('error in update comment', error);
 
-            console.log('error occured in updating comment', error);
+            toast.error('Error Updating!')
             queryClient.setQueryData(['comments', blogId], context.previousCommentsData)
 
         },
         onSuccess: async (result, variables, context) => {
+            toast.success('Update success!')
             console.log('comment in onSuccess', result);
             console.log('variable data', variables);
             await queryClient.setQueryData(['comments', blogId], (oldData) => {
@@ -54,16 +57,25 @@ function UpdateDeleteCmt({ comment }) {
         onMutate: async (_id) => {
             await queryClient.cancelQueries(['comments', blogId]);
             const previousCommentsData = queryClient.getQueryData(["comments", blogId]);
+            const blogData = queryClient.getQueryData(["blog", blogId])
             await queryClient.setQueryData(['comments', blogId], (oldData) => {
                 return oldData.filter((item) => item._id !== _id)
             })
+            await queryClient.setQueryData(["blog", blogId], (oldData) => {
+                return { ...oldData, commentCount: oldData.commentCount - 1 }
+            })
 
-            return { previousCommentsData }
+            return { previousCommentsData, blogData }
         },
         onError: (error, _id, context) => {
             console.log('error occured while deleting the comments', error);
+            toast.error('Unable to delete, Try Again!')
             queryClient.setQueryData(['comments', blogId], context.previousCommentsData)
+            queryClient.setQueryData(["blog", blogId], context.blogData)
         },
+        onSuccess: () => {
+            toast.success('Deleted successfully!')
+        }
 
     })
     const handleEdit = () => {
