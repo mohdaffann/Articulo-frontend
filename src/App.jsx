@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react'
 import './index.css'
 import Layout from './Layout/Layout.jsx'
-import { Categories, Home, Login, Signup, Posts, Write, BlogDetail } from './pages/PageIndex.js'
+import { Categories, Home, Login, Signup, Posts, Write, BlogDetail, UserProfile, UpdateUser, HeroPage, About } from './pages/PageIndex.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 import authStore from './store/authStore.js'
 function App() {
-
-  const { checkAuth } = authStore();
-
-  useEffect(() => {
-    checkAuth()
-  }, [])
 
   const routes = createBrowserRouter([
     {
@@ -19,6 +14,10 @@ function App() {
       children: [
         {
           path: '',
+          element: <HeroPage />
+        },
+        {
+          path: 'home',
           element: <Home />
         },
         {
@@ -37,11 +36,24 @@ function App() {
           element: <Login />
         },
         {
-          path: 'register',
-          element: <Signup />
-        }, {
           path: 'write',
           element: <Write />
+        },
+        {
+          path: 'register',
+          element: <Signup />
+        },
+        {
+          path: 'profile/:userName',
+          element: <UserProfile />
+        },
+        {
+          path: 'settings',
+          element: <UpdateUser />
+        },
+        {
+          path: 'about',
+          element: <About />
         }
       ]
     }
@@ -51,6 +63,7 @@ function App() {
 
   return (
     <>
+      <Toaster />
       <RouterProvider router={routes} />
     </>
   )
