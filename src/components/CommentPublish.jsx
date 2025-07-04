@@ -46,6 +46,9 @@ const CommentPublish = ({ blogId }) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries(['comments', blogId]);
+            queryClient.setQueryData(['blog', blogId], (blogData) => {
+                return { ...blogData, commentCount: commentCount + 1 }
+            })
         }
     })
 
