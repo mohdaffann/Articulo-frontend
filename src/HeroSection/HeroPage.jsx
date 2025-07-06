@@ -32,7 +32,7 @@ function HeroPage() {
             </div>
             <div className="grid grid-cols-1 gap-6 max-w-4xl justify-center items-center md:grid-cols-2 md:gap-6  mx-auto w-full">
 
-                <div className="flex-1 max-w-[450px] w-[400px] bg-white rounded-lg shadow-md transition ease-in-out cursor-pointer duration-300 hover:shadow-lg flex p-6 gap-4 items-center">
+                <div className=" bg-white rounded-lg shadow-md transition ease-in-out cursor-pointer duration-300 hover:shadow-lg flex flex-col sm:flex-row p-4 sm:p-6 gap-4 items-center sm:items-start">
                     <img src="https://res.cloudinary.com/dfmtemqoz/image/upload/v1751209664/inks_10501275_zxcsvh.png"
                         className="object-contain h-28 w-28  shrink-0"
                     />
@@ -47,7 +47,7 @@ function HeroPage() {
                         <span className="text-gray-700">Choose a category</span>
                     </div>
                 </div>
-                <div className="max-w-[450px] w-[400px]  bg-white rounded-lg shadow-md transition duration-300 cursor-pointer ease-in-out hover:shadow-lg flex p-6 gap-4 items-center ">
+                <div className="  bg-white rounded-lg shadow-md transition duration-300 cursor-pointer ease-in-out hover:shadow-lg flex flex-col sm:flex-row p-4 sm:p-6 gap-4 items-center sm:items-start ">
                     <img src="https://res.cloudinary.com/dfmtemqoz/image/upload/v1751209664/follow_9238353_qffwlx.png" className="object-contain h-28 w-28  shrink-0" />
                     <div className="  flex flex-col gap-2  text-center sm:text-left">
                         <div className="mb-2">
@@ -60,7 +60,7 @@ function HeroPage() {
                         <span className="text-gray-700">Get follow lists</span>
                     </div>
                 </div>
-                <div className="max-w-[450px] w-[400px]  bg-white rounded-lg shadow-md transition duration-300 cursor-pointer ease-in-out hover:shadow-lg flex p-6 gap-4 items-center">
+                <div className="  bg-white rounded-lg shadow-md transition duration-300 cursor-pointer ease-in-out hover:shadow-lg flex flex-col sm:flex-row p-4 sm:p-6 gap-4 items-center sm:items-start">
                     <img src="https://res.cloudinary.com/dfmtemqoz/image/upload/v1751209664/compose_18311539_b8yefd.png" className="object-contain h-28 w-28  shrink-0" />
                     <div className=" flex flex-col gap-2  text-center sm:text-left">
                         <div className="mb-2">
@@ -72,7 +72,7 @@ function HeroPage() {
                         <span className="text-gray-700">Delete comments</span>
                     </div>
                 </div>
-                <div className="max-w-[450px] w-[400px] bg-white rounded-lg shadow-md transition duration-300 cursor-pointer ease-in-out hover:shadow-lg flex p-6 gap-4 items-center">
+                <div className=" bg-white rounded-lg shadow-md transition duration-300 cursor-pointer ease-in-out hover:shadow-lg flex flex-col sm:flex-row p-4 sm:p-6 gap-4 items-center sm:items-start">
                     <img src="https://res.cloudinary.com/dfmtemqoz/image/upload/v1751209664/filter-browser_17252861_hblrlt.png" className="object-contain h-28 w-28  shrink-0" />
                     <div className=" flex flex-col gap-2  text-center sm:text-left">
                         <div className="mb-2">
