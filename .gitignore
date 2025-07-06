@@ -12,7 +12,7 @@ eslint.config.js
 
 package-lock.json
 Readme.md 
-vite.config.js
+
 dist
 dist-ssr
 *.local
