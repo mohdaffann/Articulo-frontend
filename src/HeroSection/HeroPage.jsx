@@ -30,7 +30,7 @@ function HeroPage() {
                     <span className="text-gray-700 font-semibold text-2xl sm:text-3xl">Features</span>
                 </div>
             </div>
-            <div className="grid grid-cols-1 gap-6 max-w-4xl md:grid-cols-2 md:gap-6  mx-auto w-full">
+            <div className="grid grid-cols-1 gap-6 max-w-4xl justify-center items-center md:grid-cols-2 md:gap-6  mx-auto w-full">
 
                 <div className="flex-1 max-w-[450px] w-[400px] bg-white rounded-lg shadow-md transition ease-in-out cursor-pointer duration-300 hover:shadow-lg flex p-6 gap-4 items-center">
                     <img src="https://res.cloudinary.com/dfmtemqoz/image/upload/v1751209664/inks_10501275_zxcsvh.png"
