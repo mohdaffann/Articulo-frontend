@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import useFollowStore from "./useFollowStore.js";
 const authStore = create((set) => (
     {

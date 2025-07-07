@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios from '../axiosInstance.js'
 import authStore from "../store/authStore";
 import CommentPublish from "./CommentPublish";
 import UpdateDeleteCmt from "../customHooks/UpdateDeleteCmt";

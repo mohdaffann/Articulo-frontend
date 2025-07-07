@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axiosInstance.js";
 import useFollowStore from "../../store/useFollowStore";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 const unfollow = (userId) => {

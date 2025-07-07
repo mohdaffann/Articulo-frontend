@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import { Link } from "react-router-dom";
 function UserSection() {
     const { data } = useQuery({

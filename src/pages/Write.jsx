@@ -1,5 +1,5 @@
 import React, { useRef, useState, lazy, Suspense, useEffect } from "react";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import EditorLoader from "../components/EditorLoader.jsx";
 import authStore from "../store/authStore.js";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 
 export const useFetchId = (id) => {
     const [blog, setBlog] = useState(null)

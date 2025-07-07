@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axiosInstance.js";
 import { useQuery } from "@tanstack/react-query";
 
 const getFollowers = async (userID) => {

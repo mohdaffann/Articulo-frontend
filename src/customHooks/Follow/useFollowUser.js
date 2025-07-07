@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axiosInstance.js";
 import useFollowStore from "../../store/useFollowStore.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 

@@ -8,7 +8,7 @@ import CommentSection from "../components/CommentSection.jsx";
 import { ArrowLeftIcon } from 'lucide-react';
 import authStore from "../store/authStore.js";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import useDirectFollow from "../customHooks/Follow/useDirectFollow.js";
 import useDirectUnfollow from "../customHooks/Follow/useDirectUnfollow.js";
 import useFollowStore from "../store/useFollowStore.js";

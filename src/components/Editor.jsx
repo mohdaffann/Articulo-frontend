@@ -6,7 +6,7 @@ import EditorjsList from '@editorjs/list';
 import ImageTool from '@editorjs/image';
 import editorjsCodecup from '@calumk/editorjs-codecup';
 import '../components/editorjs.css';
-import axios from 'axios';
+import axios from '../axiosInstance.js';
 const Editor = forwardRef((props, ref) => {
 
     const editorInstance = useRef(null);

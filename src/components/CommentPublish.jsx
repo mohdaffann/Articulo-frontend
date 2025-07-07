@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import axios from 'axios';
+import axios from '../axiosInstance.js'
 import authStore from '../store/authStore';
 const CommentPublish = ({ blogId }) => {
     const { user } = authStore();

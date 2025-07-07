@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PostCard from "../components/PostCard";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import { Link } from 'react-router-dom'
 import { useQuery } from "@tanstack/react-query";
 import EditorLoader from "../components/EditorLoader";

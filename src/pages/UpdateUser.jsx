@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import authStore from "../store/authStore";
 import { useForm } from "react-hook-form";
 import { UserRoundIcon, XSquareIcon } from 'lucide-react'

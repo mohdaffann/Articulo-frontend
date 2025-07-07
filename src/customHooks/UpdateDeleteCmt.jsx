@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import authStore from "../store/authStore";
-import axios from "axios";
+import axios from "../axiosInstance.js";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { Edit, Trash } from 'lucide-react'
 import { toast } from 'react-hot-toast'
