@@ -43,11 +43,11 @@ function Home() {
     }
     const recommended = ['6851aaf70bf8497d5870515c', '6852d1e672d34997feed0272']
     return (
-        <div className="max-w-7xl mx-auto px-5 py-5 my-10 min-h-[300px]">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-5 py-5 my-10 min-h-[300px]">
 
             <div className=" flex flex-col lg:flex-row gap-8">
                 <div className="flex-1 lg:w-4/5">
-                    <div className="flex items-center justify-evenly mb-4 w-full">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 w-full">
                         <SearchBlog />
                         <div className="relative">
                             <button className="px-2 py-1.5 cursor-pointer bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 transition-all duration-200 flex items-center  justify-center"
@@ -80,7 +80,7 @@ function Home() {
                         </div>
                     </div>
 
-                    <div className=" flex items-center justify-start pl-6 space-x-3 mb-2.5 ">
+                    <div className=" flex flex-wrap items-center justify-start pl-4 sm:pl-6 gap-2 mb-3 ">
                         <button className={`px-1.5 cursor-pointer py-1 rounded-md bg-gray-300 text-gray-700 text-[18px] ${sort === 'recommended' ? 'bg-gray-950 text-white' : null}`}
                             onClick={() => setSort('recommended')}
                         >Recommended</button>
@@ -91,7 +91,7 @@ function Home() {
                     </div>
 
 
-                    <div className={layoutType === 'grid' ? 'grid gap-4 md:grid-cols-3 sm:grid-cols-1 ' : 'space-y-5 '}>
+                    <div className={layoutType === 'grid' ? 'grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ' : 'space-y-5 '}>
                         {response.data?.data?.blogs.filter((item) => {
                             if (sort === 'recommended') {
                                 return recommended.includes(item?._id)

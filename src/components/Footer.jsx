@@ -8,7 +8,7 @@ function Footer() {
         window.open('https://www.linkedin.com/in/muhammad-affan-anass/', '_blank')
     }
     return (
-        <footer className="w-full py-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <footer className="w-full py-4 bg-white dark:bg-gray-800 dark:text-white border-t border-gray-200 dark:border-gray-700">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center text-center flex-col">
                     <p>Made by MohammedAffan</p>

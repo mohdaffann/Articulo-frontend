@@ -61,11 +61,11 @@ function BlogDetail() {
                 {isLoading ? <EditorLoader /> :
                     <>
 
-                        <div className="flex flex-row items-center justify-start w-full mb-4 gap-2">
+                        <div className="flex flex-wrap items-center justify-start w-full mb-4 gap-2">
                             <Link to={`/profile/${blog?.user?.userName}`}>
 
 
-                                <div className="flex flex-row items-center">
+                                <div className="flex flex-wrap gap-1 items-center">
                                     <img src={blog?.user?.profile} alt={<User />} className="w-10 h-10 rounded-full object-cover mr-1" />
                                     <p className="text-lg font-semibold text-gray-900 font-serif">{blog.user?.userName}</p>
                                 </div>

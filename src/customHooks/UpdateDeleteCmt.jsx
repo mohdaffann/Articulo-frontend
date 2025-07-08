@@ -130,7 +130,7 @@ function UpdateDeleteCmt({ comment }) {
                     <textarea
                         value={newText}
                         onChange={(e) => setNewText(e.target.value)}
-                        className="w-[600px] p-2 border border-gray-300 rounded min-h-[100px]"
+                        className="w-full sm:w-[600px] p-2 border border-gray-300 rounded min-h-[100px]"
                         rows={3}
 
                     />

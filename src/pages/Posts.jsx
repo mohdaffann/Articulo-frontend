@@ -47,10 +47,10 @@ function Posts() {
     return (
 
 
-        <div className=" max-w-5xl mx-auto px-5 py-5 my-10 min-h-[300px]">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-5 py-5 my-10 min-h-[300px]">
 
 
-            <div className="flex items-center justify-evenly mb-4 w-full">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-evenly gap-3 mb-4 w-full">
                 <SearchBlog />
                 <div className="relative">
                     <button className="cursor-pointer px-2 py-1.5 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 transition-all duration-200 flex items-center  justify-center"
@@ -141,7 +141,7 @@ function Posts() {
 
             </div>
 
-            <div className={layoutType === 'grid' ? 'grid gap-4 md:grid-cols-3 sm:grid-cols-1' : 'space-y-5'}>
+            <div className={layoutType === 'grid' ? 'grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3' : 'space-y-5'}>
                 {response?.data?.data.blogs.filter((item, ind) => (
                     item.category === sort
                 )).map((item, ind) => (
