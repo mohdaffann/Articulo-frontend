@@ -4,7 +4,7 @@ function Spinner() {
     return (
         <div className="w-4 h-4 flex items-center justify-center">
             <svg
-                className="animate-spin text-white"
+                className="animate-spin text-current"
                 viewBox="0 0 64 64"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
