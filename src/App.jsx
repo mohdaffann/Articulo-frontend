@@ -5,6 +5,7 @@ import { Categories, Home, Login, Signup, Posts, Write, BlogDetail, UserProfile,
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import authStore from './store/authStore.js'
+import { Analytics } from "@vercel/analytics/react";
 function App() {
 
   const routes = createBrowserRouter([
@@ -65,6 +66,7 @@ function App() {
     <>
       <Toaster />
       <RouterProvider router={routes} />
+      <Analytics />
     </>
   )
 
